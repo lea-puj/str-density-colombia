@@ -13,7 +13,7 @@
 #             spatial-data/dane_grilla/N6_1K/N6_1K.shp, 1 km² grid with
 #             housing units from the 2018 census.
 #             spatial-data/ShapeFiles/World/world.shp, country boundaries.
-#   Output    Two maps per municipality, in spatial-data/<municipality>/:
+#   Output    Two maps per municipality, in spatial-data/map_housing_density/<municipality>/:
 #             00_<municipality>_combined.png, density map with legend.
 #             00_<municipality>_no_legend.png, density map with location
 #             insets and no legend.
@@ -68,7 +68,7 @@ col_shape$cod.mun <- as.numeric(
   paste0(col_shape$DPTO_CCDGO, col_shape$MPIO_CCDGO)
 )
 
-# Decision: the San Andrés archipelago (department 88) is left out of the
+# By assumption, the San Andrés archipelago (department 88) is left out of the
 # maps so that the mainland fills the frame.
 col_shape <- col_shape %>%
   filter(DPTO_CCDGO != "88")
@@ -196,7 +196,7 @@ make_municipality_maps <- function(mpio_name){
   ## 5.1 Map extent ----------------------------------------------------
   
   # The municipality's bounding box is expanded by half its size and made
-  # square. This expansion factor applies only within this function.
+  # square
   bb <- st_bbox(mpio)
   
   expand_factor <- 0.5
