@@ -6,40 +6,33 @@ The repository is organized as follows. Each box is a folder, and the arrows sho
 ```mermaid
 flowchart TB
   subgraph raw["data/raw"]
-    A["120226_*_scraper_data.RDS"]
-    B["raw-2nd-lvl-variables.xlsx"]
+    A["120226_*_<br/>scraper_data.RDS"]
+    B["raw-2nd-lvl-<br/>variables.xlsx"]
   end
 
   subgraph prep["prep-data"]
-    S1["01_scrape_listings.R"]
-    S2["02_build_city_level.R"]
-    S3["03_prepare_input.R"]
-    S4["04_housing_density.R"]
+    S1["01_scrape_<br/>listings.R"]
+    S2["02_build_<br/>city_level.R"]
+    S3["03_prepare_<br/>input.R"]
+    S4["04_housing_<br/>density.R"]
   end
 
   subgraph clean["data/clean"]
-    C["clean_2ndlevel_data.xlsx"]
-    D["100226_multilevel_final_dataset.xlsx"]
+    C["clean_2ndlevel_<br/>data.xlsx"]
+    D["100226_multilevel_<br/>final_dataset.xlsx"]
   end
 
   subgraph spatial["spatial-data"]
     L["Spatial layers"]
-    M["Municipality maps (Figure 1)"]
+    M["Municipality maps"]
   end
 
   subgraph models["multilevel-models"]
-    S5["05_estimation_sample.R"]
-    S6["06_null_model.R"]
-    S7["07_random_intercept_slope.R"]
-    S8["08_cross_level.R"]
-    F["model_functions.R"]
-  end
-
-  subgraph out["output"]
-    E["estimation_sample.rds"]
-    T3["Table 3"]
-    T4["Table 4"]
-    T5["Table 5"]
+    S5["05_estimation_<br/>sample.R"]
+    S6["06_null_<br/>model.R"]
+    S7["07_random_<br/>intercept_slope.R"]
+    S8["08_cross_<br/>level.R"]
+    F["model_<br/>functions.R"]
   end
 
   S1 --> A
@@ -48,10 +41,6 @@ flowchart TB
   C --> S3 --> D
   D --> S4
   L --> S4 --> M
-  D --> S5 --> E
-  E --> S6 & S7 & S8
+  D --> S5 --> S6 & S7 & S8
   F -.-> S6 & S7 & S8
-  S6 --> T3
-  S7 --> T4
-  S8 --> T5
 ```
