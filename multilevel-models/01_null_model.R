@@ -5,10 +5,10 @@
 #   Purpose   Estimate the null (intercept-only) model and the intraclass
 #             correlation.
 #   Paper     Section 3.2.1, Table 3.
-#   Input     output/estimation_sample.rds (from 05_estimation_sample.R).
-#             code/model_functions.R
-#   Output    output/tables/table3_null_model.csv
-#   Next      07_random_intercept_slope.R
+#   Input     output/estimation_sample.rds (from 05_estimation_sample.R)
+#   Output    multilevel-models/tables/table3_null_model.csv
+#   Requirement:   model_functions.R
+#   Next      random_intercept_slope.R
 #   Packages  dplyr, nlme, msm, janitor
 #   Note      Estimated by maximum likelihood (method = "ML"). Run the
 #             script from the root folder of the project.
