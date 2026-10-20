@@ -4,13 +4,11 @@
 #
 #   Purpose   Estimate the cross-level interaction models (Models 3.1 to
 #             3.4).
-#   Paper     Section 3.2.3, Table 5, Figure 5, and the quantities derived
-#             from Model 3.4 in the text.
-#   Input     output/estimation_sample.rds (from 05_estimation_sample.R).
-#             code/model_functions.R
-#   Output    output/tables/table5_cross_level.csv
-#             output/tables/text_quantities_table5.csv
-#             output/models/m34.rds (used by 10_figure5_interactions.R).
+#   Paper     Section 3.2.3
+#   Input     multilevel-models/estimation_sample.rds 
+#   Requirement multilevel-models/model_functions.R
+#   Output    multilevel-models/tables/table5_cross_level.csv
+#             multilevel-models/models/m34.rds 
 #   Next      09_figure4_random_slopes.R
 #   Packages  dplyr, nlme, msm, janitor
 #   Note      Estimated by maximum likelihood (method = "ML"). Run the
@@ -130,7 +128,5 @@ tab_m34 <- table_mixed_model_rslope(m34_cent, digits = 3) %>%
 
 write.csv(bind_rows(tab_m31, tab_m32, tab_m33, tab_m34),
           file.path(tab_dir, "table5_cross_level.csv"), row.names = FALSE)
-write.csv(text_quantities,
-          file.path(tab_dir, "text_quantities_table5.csv"), row.names = FALSE)
 
 saveRDS(m34_cent, file.path(model_dir, "m34.rds"))
