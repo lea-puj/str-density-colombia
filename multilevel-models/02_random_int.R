@@ -4,14 +4,12 @@
 #
 #   Purpose   Estimate the random-intercept model (Model 2.1) and the model
 #             with a random slope for log floor area (Model 2.2).
-#   Paper     Section 3.2.2, Table 4, Figure 4, and the quantities derived
-#             from these models in the text.
-#   Input     output/estimation_sample.rds (from 05_estimation_sample.R).
-#             code/model_functions.R
-#   Output    output/tables/table4_random_intercept_slope.csv
-#             output/tables/text_quantities_table4.csv
-#             output/models/m22.rds (used by 09_figure4_random_slopes.R).
-#   Next      08_cross_level.R
+#   Paper     Section 3.2.2
+#   Input     multilevel-models/estimation_sample.rds (from 05_estimation_sample.R).
+#   Requirement multilevel-models/model_functions.R
+#   Output    multilevel-models/tables/table4_random_intercept_slope.csv
+#             multilevel-models/models/m22.rds.
+#   Next      03_cross_level.R
 #   Packages  dplyr, nlme, msm, janitor
 #   Note      Estimated by maximum likelihood (method = "ML"). Run the
 #             script from the root folder of the project.
@@ -57,7 +55,7 @@ tab_m21 <- table_mixed_model(m21_cent, digits = 3) %>%
 # 3 MODEL 2.2: RANDOM SLOPE FOR LOG FLOOR AREA ---------------------------------
 
 
-# Decision: log floor area is the only level-1 variable with a random slope.
+# Note that log floor area is the only level-1 variable with a random slope.
 m22_cent <- lme(
   # Level-1 variables
   lprecio_c ~ larea_c + banos + ses +
@@ -83,7 +81,5 @@ tab_m22 <- table_mixed_model_rslope(m22_cent, digits = 3) %>%
 
 write.csv(bind_rows(tab_m21, tab_m22),
           file.path(tab_dir, "table4_random_intercept_slope.csv"), row.names = FALSE)
-write.csv(text_quantities,
-          file.path(tab_dir, "text_quantities_table4.csv"), row.names = FALSE)
 
 saveRDS(m22_cent, file.path(model_dir, "m22.rds"))
