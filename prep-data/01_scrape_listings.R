@@ -132,13 +132,13 @@ scrape_property <- function(url_det){
   
   # Drop navigation text, empty strings and separators, the section title,
   # and the first three spans, which belong to the summary bar and not to
-  # the detail table.
+  # the detail table
   labels <- labels[labels != "Volver a la búsqueda"]
   labels <- labels[labels != "" & labels != "•"]
   labels <- labels[!str_detect(labels, regex("^detalles de la propiedad$", ignore_case = TRUE))]
   labels <- labels[-c(1:3)]
   
-  # Decision: only the first 15 fields of the detail table are kept.
+  # Just the first 15 fields of the detail table are kept
   labels <- labels[1:15]
   
   valores <- page %>%
@@ -148,7 +148,7 @@ scrape_property <- function(url_det){
   
   # Labels and values are laid out in two columns. Both vectors are padded
   # to an even length and truncated to the same length so that they can be
-  # paired row by row.
+  # paired row by row
   if (length(labels) %% 2 != 0) labels <- c(labels, NA)
   if (length(valores) %% 2 != 0) valores <- c(valores, NA)
   
