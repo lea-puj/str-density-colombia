@@ -4,7 +4,7 @@
 #
 #   Purpose   Functions that tabulate the multilevel models and compute the
 #             intraclass correlation.
-#   Paper     Section 2.4 and Tables 3, 4 and 5.
+#   Paper     Section 2.4
 #   Used by   06_null_model.R, 07_random_intercept_slope.R,
 #             08_cross_level.R (with source()).
 #   Packages  nlme, msm, janitor, dplyr
@@ -362,7 +362,7 @@ table_mixed_model_rslope <- function(model, digits = 3, group = "ciudad",
 # 3 INTRACLASS CORRELATION -----------------------------------------------------
 
 
-# rho = tau0^2 / (tau0^2 + sigma^2), equation (2) of the paper.
+# rho = tau0^2 / (tau0^2 + sigma^2)
 rho_f <- function(model) {
   vc <- nlme::VarCorr(model)
   
