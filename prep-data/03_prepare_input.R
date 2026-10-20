@@ -244,8 +244,7 @@ flow <- flow %>%
   left_join(count(lvl1_data_vars, slug_ciudad, name = "complete"),
             by = "slug_ciudad")
 
-# Reference categories. They are not kept in the xlsx output and are set
-# again in the estimation scripts.
+# Reference categories:
 lvl1_data_vars$antiguedad <- relevel(
   factor(lvl1_data_vars$antiguedad),
   ref = "1 a 8 años"
