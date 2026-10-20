@@ -115,7 +115,7 @@ level1_data <- level1_data %>%
       stringi::stri_trans_general("Latin-ASCII")
   )
 
-# Decision: a dwelling is classified as furnished when the description
+# THIS IS IMPORTANT: note that a dwelling is classified as furnished when the description
 # states it explicitly (e.g., "apartamento amoblado", "se arrienda
 # amoblado", "totalmente amoblado") and does not negate it (e.g., "no
 # amoblado", "sin amoblar").
@@ -200,7 +200,7 @@ level1_data$antiguedad_clean <- ifelse(
 
 ## 5.6 Socioeconomic stratum -------------------------------------------
 
-# Decision: the six strata are grouped as low (1-2), medium (3-4) and
+# Note that the six strata are grouped as low (1-2), medium (3-4) and
 # high (5-6).
 level1_data <- level1_data %>%
   mutate(
@@ -233,7 +233,7 @@ lvl1_data_vars <- level1_data %>%
          antiguedad = antiguedad_clean,
          amoblado)
 
-# Decision: only listings with complete information are kept. The furnished
+# Note that only listings with complete information are kept. The furnished
 # indicator is not part of this condition, so listings without a
 # description are not dropped.
 lvl1_data_vars <- lvl1_data_vars %>%
@@ -312,7 +312,7 @@ flow <- flow %>%
 
 # 9 SAMPLE OF CITIES -----------------------------------------------------------
 
-# Decision: cities with 20 or fewer listings are excluded.
+# Note that cities with 20 or fewer listings are excluded.
 counts_cities <- count(final_dataset, ciudad) %>%
   filter(n > 20)
 
