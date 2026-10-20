@@ -7,9 +7,9 @@
 #   Paper     Sections 2.2 and 2.4.
 #   Input     data/clean/100226_multilevel_final_dataset.xlsx
 #             (from 03_prepare_input.R).
-#   Output    output/estimation_sample.rds, centered data and the mean of
+#   Output    multilevel-models/estimation_sample.rds, centered data and the mean of
 #             the log price.
-#             output/tables/sample_flow_estimation.csv
+#             multilevel-models/tables/sample_flow_estimation.csv
 #   Next      06_null_model.R
 #   Packages  readxl, dplyr, stringr
 #   Note      Run the script from the root folder of the project.
@@ -29,8 +29,8 @@ out_dir <- "multilevel-models"
 tab_dir <- file.path(out_dir, "tables")
 
 
-# Decision: listings at or above 15 million COP/month are excluded
-# (Section 2.2).
+# Note that listings at or above 15 million COP/month are excluded
+# (see Section 2.2).
 price_cap <- 15000000
 
 
