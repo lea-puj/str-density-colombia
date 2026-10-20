@@ -8,7 +8,7 @@
 #   Input     output/estimation_sample.rds (from 05_estimation_sample.R)
 #   Output    multilevel-models/tables/table3_null_model.csv
 #   Requirement:   model_functions.R
-#   Next      random_intercept_slope.R
+#   Next      02_random_int.R
 #   Packages  dplyr, nlme, msm, janitor
 #   Note      Estimated by maximum likelihood (method = "ML"). Run the
 #             script from the root folder of the project.
