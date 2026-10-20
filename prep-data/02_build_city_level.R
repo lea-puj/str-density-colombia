@@ -127,7 +127,7 @@ total18 <- censo_unadj18 %>%
   filter(dpto != "Total Nacional", nivel == "Total",
          edad %in% c("Total"))
 
-# Decision: young population is defined as persons aged 20 to 39.
+# Note that young population is defined as persons aged 20 to 39.
 young18 <- censo_unadj18 %>%
   filter(dpto != "Total Nacional", nivel == "Total",
          edad %in% c("20 a 24", "25 a 29",
@@ -176,7 +176,7 @@ censo_vivi18 <- read_sheet("housing") %>%
   clean_names() %>%
   fill(dpto, municipio, nivel, .direction = "down")
 
-# Decision: the housing stock counts houses and apartments in the whole
+# Note that the housing stock counts houses and apartments in the whole
 # municipality (all areas, all occupancy conditions). It is the denominator
 # of STR listing density.
 vivi_18 <- censo_vivi18 %>%
@@ -231,7 +231,7 @@ colnames(ownership) <- c("departamento", "area", "total",
                          "pagada.total", "pagada.prop",
                          "pagando.total", "pagando.prop")
 
-# Decision: the homeownership share is the sum of households in owned
+# Note that the homeownership share is the sum of households in owned
 # dwellings fully paid and owned dwellings being paid, department total.
 # The first row of the sheet holds column labels and is dropped.
 ownership <- ownership[-1, ] %>%
@@ -339,14 +339,14 @@ clean_dane_panel <- function(df, sheet = 1){
 
 geih_tidy <- clean_dane_panel(geih_cuadro)
 
-# Decision: unemployment and labour force participation rates for the
-# October-December 2025 rolling quarter.
+# Note that the unemployment and labour force participation rates for the
+# October-December 2025 moving quarter.
 geih_tidy <- geih_tidy %>%
   filter(indicador %in%
            c("Tasa de Desocupación (TD)", "Tasa Global de Participación (TGP)"),
          periodo == "Oct - Dic")
 
-# Decision: for cities reported as metropolitan areas (A.M.), the indicator
+# Note that for cities reported as metropolitan areas (A.M.), the indicator
 # of the metropolitan area is assigned to the city.
 geih_tidy <- geih_tidy %>%
   mutate(
@@ -385,7 +385,7 @@ arrivals <- read_sheet("nonres") %>%
   clean_names()
 
 # Arrivals of non-resident foreign visitors by destination municipality.
-# Decision: a single month, November 2025.
+# This is a single month, November 2025.
 arrivals25 <- arrivals %>%
   filter(as.numeric(ano) == 2025,
          mes == "noviembre") %>%
@@ -409,7 +409,7 @@ rnt <- rnt %>%
   mutate(cod.mun = as.numeric(codigo_municipio)) %>%
   select(ano, cod.mun, nit, categoria)
 
-# Decision: registered providers are counted as distinct tax identification
+# Note that registered providers are counted as distinct tax identification
 # numbers (NIT) per municipality and year, across all provider categories.
 # A provider with several establishments counts once.
 rnt_city <- rnt %>%
